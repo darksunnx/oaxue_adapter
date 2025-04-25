@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Профиль — (тут ник)</title>
+  <style>
+    /* Градиентный фон */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Виньетка по краям */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 50%,
+        rgba(0,0,0,0.7) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Карточка профиля */
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    /* Текстура шума */
+    .container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255,255,255,0.03) 1px,
+        rgba(255,255,255,0.03) 2px
+      );
+      pointer-events: none;
+      border-radius: 1rem;
+    }
+
+    /* Появление карточки */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Плавание аватара */
+    @keyframes float {
+      0%, 100%   { transform: translateY(0); }
+      50%        { transform: translateY(-10px); }
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0.5rem 0;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    }
+
+    /* Стили кнопок */
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: linear-gradient(45deg, #00ffff, #0077ff);
+      background-size: 200% 200%;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-position 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-position: 100% 0;
+      transform: scale(1.05);
+    }
+
+    /* Секции информации */
+    .section {
+      margin-top: 2rem;
+      text-align: left;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .section h2 {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.3rem;
+    }
+
+    .section p {
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    /* Адаптив для мобилок */
+    @media (max-width: 480px) {
+      .container { padding: 1rem; }
+      h1 { font-size: 1.5rem; }
+      .btn { padding: 0.6rem 1rem; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- путь к файлу аватара: по умолчанию "твой_аватар.jpg" из той же папки -->
+    <img class="avatar" src="твой_аватар.jpg" alt="Аватар">
+
+    <!-- твой ник -->
+    <h1>ᴛщᴇᴄᴧᴀʙиᴇ</h1>
+
+    <div class="buttons">
+      <!-- ссылка на Telegram -->
+      <a class="btn" href="https://t.me/oaxue" target="_blank">Telegram</a>
+      <!-- ссылка на GitHub -->
+      <a class="btn" href="https://github.com/darksunnx" target="_blank">GitHub</a>
+      <!-- ссылка на дарк сан любими -->
+      <a class="btn" href="https://t.me/+AzGulV3VsXQ2NjY6" target="_blank">Dark Sun (My Project)</a>
+    </div>
+
+    <div class="section">
+      <h2>О себе</h2>
+      <p>Привет я тщеславие админ проэкта Dark Sun . Занимаюсь поиском по открытым источникам (Osint) Рад сотруднечиству или любой другой услугой. Удачи!</p>
+    </div>
+
+    <div class="section">
+      <h2>Навыки</h2>
+      <p>
+        • OSINT и разведка данных<br>
+        • Web-разработка (HTML) Также разработка софтов<br>
+        • Сватинг<br>
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Проекты</h2>
+      <p>
+        – Dark Sun: Выебы бичей педофилов и скамеров а также бесплатное обучение<br>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
+
